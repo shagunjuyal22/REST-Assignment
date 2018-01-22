@@ -9,20 +9,19 @@ import javax.ws.rs.core.MediaType;
 
 import com.shagun.assignment.transaction_statistics.model.Statistics;
 import com.shagun.assignment.transaction_statistics.service.StatisticsService;
+import com.shagun.assignment.transaction_statistics.service.impl.StatisticsServiceImpl;
 
 
 @Path("/statistics")
 public class StatisticsResource {
 	
 	
-	StatisticsService statisticsService = new StatisticsService();
+	StatisticsService statisticsService = new StatisticsServiceImpl();
 	
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Statistics getStatistics() {
-		
-		System.out.println(statisticsService.getStatistics().toString());
 		
 		return statisticsService.getStatistics();
 		

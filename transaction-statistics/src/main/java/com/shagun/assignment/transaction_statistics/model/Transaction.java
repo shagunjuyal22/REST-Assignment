@@ -1,10 +1,5 @@
 package com.shagun.assignment.transaction_statistics.model;
 
-import java.sql.Timestamp;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Transaction {
 	
 	private double amount;
@@ -28,6 +23,36 @@ public class Transaction {
 	}
 	
 	public Transaction() {}
+	
+	@Override
+	public String toString() {
+		return ("Transaction Object is {"+
+							"amount=" + this.amount+
+							", timestamp is=" +this.timestamp + "}");
+		
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Transaction trx = (Transaction)o;
+		if(o== null || this == null)
+			return false;
+		if(getClass() != o.getClass())
+			return false;
+		return Double.compare(this.amount, trx.amount) ==0
+				&& Long.compare(this.timestamp, trx.timestamp) ==0;	
+
+		
+	}
+	
+	@Override
+	public int hashCode() {
+        int result = 17;
+        result = 31 * result + (int)this.amount;
+        result = 31 * result + this.timestamp.intValue();
+        
+        return result;
+    }
 	
 
 }
